@@ -2,10 +2,9 @@
 FROM python:3.8-slim-buster AS print_badge
 
 RUN apt update -y && \
-    apt install -y python3-pip && \
+    apt install -y python3-pip
     # *** No need to install fonts if provided in Python code
     # apt install -y ttf-mscorefonts-installer && \
-    apt install -y uwsgi-plugin-python3
 
 COPY requirements.txt requirements.txt
 
