@@ -1,5 +1,5 @@
 # DO NOT run print_badge.service when this container is running
-FROM tiangolo/uwsgi-nginx-flask:python3 AS print_badge
+FROM tiangolo/uwsgi-nginx-flask:python3.8 AS print_badge
 
 RUN apt update -y && \
     apt install -y python3-pip && \
