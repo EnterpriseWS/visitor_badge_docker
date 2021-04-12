@@ -1,6 +1,6 @@
 # Any content of custom folder /images except .buffer
-app/images/*
-!app/images/.buffer
+images/*
+!images/.buffer
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

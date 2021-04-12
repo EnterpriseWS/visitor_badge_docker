@@ -1,5 +1,5 @@
 # DO NOT run print_badge.service when this container is running
-FROM tiangolo/uwsgi-nginx-flask:python3.8 AS print_badge
+FROM python:3.8-slim-buster AS print_badge
 
 RUN apt update -y && \
     apt install -y python3-pip && \
@@ -7,14 +7,13 @@ RUN apt update -y && \
     # apt install -y ttf-mscorefonts-installer && \
     apt install -y uwsgi-plugin-python3
 
-COPY ./app /app
+COPY requirements.txt requirements.txt
 
-WORKDIR /app
+WORKDIR /
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 
+COPY ./ /
 ENV RUNNING_IN_DOCKER=True
 EXPOSE 8080
-CMD ["uwsgi", "--http-socket", "0.0.0.0:8080", \
-              "--plugin", "python3", \
-              "--module", "main:app"]
+CMD ["python3", "-m" , "flask", "run", "--host=0.0.0.0:8080"]

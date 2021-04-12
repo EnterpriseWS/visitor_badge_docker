@@ -3,6 +3,8 @@ import sys
 if not os.environ.get('RUNNING_IN_DOCKER', False):
     print('Running in OS...')
     sys.path.append('/home/ubuntu/.local/lib/python3.8/site-packages/')
+else:
+    print('Running in Docker...')
 
 import json
 import base64
@@ -33,7 +35,7 @@ PRINTER_IDENTIFIER = 'usb://0x04f9:0x209b/000J0Z257065'
 if platform.system() == 'Linux':
     IMG_FOLDER = './images/'
 elif platform.system() == 'Windows':
-    IMG_FOLDER = 'C:\\SourceCode\\Python\\brother_ql_800\\images\\'
+    IMG_FOLDER = '.\\images\\'
 
 
 @app.route('/print', methods=['POST'])

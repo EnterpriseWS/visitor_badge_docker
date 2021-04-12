@@ -10,10 +10,10 @@ IMG_FOLDER = ''
 if platform.system() == 'Linux':
     IMG_FOLDER = 'images/'
 elif platform.system() == 'Windows':
-    IMG_FOLDER = 'C:\\SourceCode\\Python\\brother_ql_800\\images\\'
+    IMG_FOLDER = '.\\images\\'
 
 
-def get_base64_image(filename: str = 'C:\\SourceCode\\Python\\brother_ql_800\\images\\face_dither.png') -> str:
+def get_base64_image(filename: str = '.\\images\\face_dither.png') -> str:
     try:
         encoded_image = b''
         image_format = ''
