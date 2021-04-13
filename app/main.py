@@ -1,4 +1,5 @@
 from printer_listener import app
+import sys
 
 # -----------------------------------------------------------------------
 # Use main.py to run on any WSGI server
