@@ -7,16 +7,20 @@ RUN apt update -y && \
     # *** No need to install fonts if provided in Python code
     # apt install -y ttf-mscorefonts-installer && \
 
-COPY ./requirements.txt /
-
-WORKDIR /
+RUN mkdir /app
+COPY ./requirements.txt /app
+WORKDIR /app
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-COPY . /
-# WORKDIR /app
+COPY ./*.py /app
+RUN mkdir /app/.fonts
+COPY ./.fonts/* /app/.fonts
+RUN mkdir /app/images
+COPY ./images/* /app/images
+
 ENV RUNNING_IN_DOCKER=True
 EXPOSE 7070
 ENTRYPOINT ["uwsgi", "--http-socket", "0.0.0.0:7070", "--plugin", \
-            "python3", "--chdir", "/app", "--module", "main:app"]
+            "python3", "--module", "main:app"]
 # CMD ["python3", "-m" , "main:app", "--host=0.0.0.0", "--port=8080"]
