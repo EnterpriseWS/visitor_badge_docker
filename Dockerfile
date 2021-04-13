@@ -11,7 +11,7 @@ COPY ./requirements.txt /
 WORKDIR /
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-COPY ./app .
+COPY ./app/ .
 ENV RUNNING_IN_DOCKER=True
 EXPOSE 7070
 ENTRYPOINT ["uwsgi", "--http-socket", "0.0.0.0:7070", "--plugin", \
