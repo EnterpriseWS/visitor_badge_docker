@@ -14,9 +14,9 @@ WORKDIR /
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 COPY . /
-WORKDIR /app
+# WORKDIR /app
 ENV RUNNING_IN_DOCKER=True
 EXPOSE 7070
 ENTRYPOINT ["uwsgi", "--http-socket", "0.0.0.0:7070", "--plugin", \
-            "python3", "--module", "main:app"]
+            "python3", "--module", "app/main:app"]
 # CMD ["python3", "-m" , "main:app", "--host=0.0.0.0", "--port=8080"]
