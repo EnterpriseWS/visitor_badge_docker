@@ -1,5 +1,6 @@
 # DO NOT run print_badge.service when this container is running
-FROM python:3.8-slim-buster AS print_badge
+# FROM python:3.8-slim-buster AS print_badge
+FROM ubuntu:20.04 AS print_badge
 
 RUN apt update -y
     # *** No need to install fonts if provided in Python code
@@ -8,6 +9,7 @@ RUN apt update -y
 COPY ./requirements.txt /
 WORKDIR /
 RUN pip3 install --no-cache-dir -r requirements.txt
+# Use gunicorn, not uwsgi, to avoid Python plugin issues
 RUN pip3 install gunicorn
 
 COPY ./app/ .
