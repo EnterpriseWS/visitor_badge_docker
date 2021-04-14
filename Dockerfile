@@ -3,7 +3,7 @@
 FROM ubuntu:20.04 AS print_badge
 
 RUN apt update -y && \
-    apt python3-pip -y
+    apt install -y python3-pip
     # *** No need to install fonts if provided in Python code
     # apt install -y ttf-mscorefonts-installer && \
 
