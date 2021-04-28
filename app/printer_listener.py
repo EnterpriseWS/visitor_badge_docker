@@ -1,11 +1,11 @@
 import os
 import sys
 if not os.environ.get('RUNNING_IN_DOCKER', False):
-    # TODO: Need to move the path definition to come config file
+    # TODO: Need to move the path definition to some config file
     sys.path.append('/home/ubuntu/.local/lib/python3.8/site-packages/')
-    print('Running in OS...')
+    print('->>Running in OS...')
 else:
-    print('Running in Docker...')
+    print('->>Running in Docker...')
 
 import json
 import base64
